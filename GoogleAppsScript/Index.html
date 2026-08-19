@@ -1,0 +1,2553 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>EV SAFE GUARD</title>
+
+<style>
+
+:root {
+
+  --bg:
+    #050a0f;
+
+  --panel:
+    #0b141d;
+
+  --panel2:
+    #101d28;
+
+  --border:
+    #1d3446;
+
+  --text:
+    #edf7ff;
+
+  --muted:
+    #7890a3;
+
+  --cyan:
+    #00d9ff;
+
+  --green:
+    #00e88f;
+
+  --yellow:
+    #ffd000;
+
+  --red:
+    #ff4d61;
+
+  --orange:
+    #ff9d42;
+
+}
+
+
+* {
+  box-sizing:
+    border-box;
+}
+
+
+body {
+
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      #0e2a3e,
+      var(--bg) 45%
+    );
+
+  color:
+    var(--text);
+
+  font-family:
+    Arial,
+    "Noto Sans Thai",
+    sans-serif;
+
+}
+
+
+.app {
+
+  width: 100%;
+
+  max-width:
+    1700px;
+
+  margin:
+    auto;
+
+  padding:
+    18px;
+
+}
+
+
+/* HEADER */
+
+.header {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  margin-bottom:
+    18px;
+
+}
+
+
+.brand {
+
+  font-size:
+    27px;
+
+  font-weight:
+    900;
+
+}
+
+
+.subtitle {
+
+  color:
+    var(--muted);
+
+  font-size:
+    12px;
+
+  margin-top:
+    4px;
+
+}
+
+
+.live {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  color:
+    var(--green);
+
+  font-weight:
+    700;
+
+  font-size:
+    12px;
+
+}
+
+
+.live-dot {
+
+  width:
+    10px;
+
+  height:
+    10px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--green);
+
+  box-shadow:
+    0 0 16px
+    var(--green);
+
+}
+
+
+/* STATUS */
+
+.status {
+
+  background:
+    linear-gradient(
+      135deg,
+      #10212d,
+      #081119
+    );
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    20px;
+
+  padding:
+    20px;
+
+  margin-bottom:
+    15px;
+
+}
+
+
+.status-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    2fr 1fr 1fr 1fr;
+
+  gap:
+    15px;
+
+}
+
+
+.status-main {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    18px;
+
+}
+
+
+.status-icon {
+
+  font-size:
+    45px;
+
+}
+
+
+.status-label {
+
+  font-size:
+    30px;
+
+  font-weight:
+    900;
+
+}
+
+
+.small {
+
+  color:
+    var(--muted);
+
+  font-size:
+    11px;
+
+}
+
+
+/* KPI */
+
+.kpi {
+
+  background:
+    var(--panel);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    15px;
+
+  padding:
+    15px;
+
+}
+
+
+.kpi-title {
+
+  color:
+    var(--muted);
+
+  font-size:
+    11px;
+
+}
+
+
+.kpi-value {
+
+  font-size:
+    29px;
+
+  font-weight:
+    900;
+
+  margin-top:
+    7px;
+
+}
+
+
+/* SENSOR */
+
+.sensor-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap:
+    15px;
+
+  margin-bottom:
+    15px;
+
+}
+
+
+.sensor {
+
+  background:
+    var(--panel);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    17px;
+
+  padding:
+    18px;
+
+}
+
+
+.sensor-title {
+
+  color:
+    var(--muted);
+
+  font-size:
+    13px;
+
+}
+
+
+.sensor-value {
+
+  font-size:
+    42px;
+
+  font-weight:
+    900;
+
+  margin:
+    10px 0;
+
+}
+
+
+.badge {
+
+  display:
+    inline-block;
+
+  border-radius:
+    50px;
+
+  padding:
+    6px 12px;
+
+  font-size:
+    11px;
+
+  font-weight:
+    800;
+
+}
+
+
+.green {
+
+  color:
+    var(--green);
+
+  background:
+    rgba(
+      0,
+      232,
+      143,
+      .10
+    );
+
+}
+
+
+.yellow {
+
+  color:
+    var(--yellow);
+
+  background:
+    rgba(
+      255,
+      208,
+      0,
+      .10
+    );
+
+}
+
+
+.red {
+
+  color:
+    var(--red);
+
+  background:
+    rgba(
+      255,
+      77,
+      97,
+      .10
+    );
+
+}
+
+
+/* MAIN GRID */
+
+.grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1.4fr 1fr;
+
+  gap:
+    15px;
+
+  margin-bottom:
+    15px;
+
+}
+
+
+.panel {
+
+  background:
+    var(--panel);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    17px;
+
+  padding:
+    18px;
+
+}
+
+
+.panel-title {
+
+  font-size:
+    15px;
+
+  font-weight:
+    800;
+
+  margin-bottom:
+    15px;
+
+}
+
+
+/* PREDICTION */
+
+.pred-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap:
+    10px;
+
+}
+
+
+.pred {
+
+  background:
+    #071018;
+
+  border-radius:
+    12px;
+
+  padding:
+    13px;
+
+}
+
+
+.pred-label {
+
+  color:
+    var(--muted);
+
+  font-size:
+    10px;
+
+}
+
+
+.pred-value {
+
+  font-size:
+    23px;
+
+  font-weight:
+    900;
+
+  margin-top:
+    7px;
+
+}
+
+
+/* AI */
+
+.ai {
+
+  line-height:
+    1.7;
+
+  color:
+    #d7e7f2;
+
+  background:
+    #071018;
+
+  border:
+    1px solid
+    #193040;
+
+  padding:
+    15px;
+
+  border-radius:
+    12px;
+
+  white-space:
+    pre-line;
+
+}
+
+
+/* CHART */
+
+.chart-panel {
+
+  margin-bottom:
+    15px;
+
+}
+
+
+.chart-tools {
+
+  display:
+    flex;
+
+  gap:
+    7px;
+
+  flex-wrap:
+    wrap;
+
+}
+
+
+.range {
+
+  background:
+    #09131c;
+
+  border:
+    1px solid
+    var(--border);
+
+  color:
+    var(--muted);
+
+  padding:
+    7px 12px;
+
+  border-radius:
+    20px;
+
+  cursor:
+    pointer;
+
+}
+
+
+.range.active {
+
+  color:
+    var(--cyan);
+
+  border-color:
+    var(--cyan);
+
+}
+
+
+.chart {
+
+  width:
+    100%;
+
+  height:
+    340px;
+
+}
+
+
+canvas {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+}
+
+
+/* HEATMAP */
+
+.heatmap {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    50px repeat(24, 1fr);
+
+  gap:
+    3px;
+
+  overflow:
+    auto;
+
+}
+
+
+.heat-cell {
+
+  min-width:
+    18px;
+
+  height:
+    18px;
+
+  border-radius:
+    3px;
+
+  background:
+    #10202b;
+
+}
+
+
+.heat-1 {
+
+  background:
+    #725f12;
+
+}
+
+
+.heat-2 {
+
+  background:
+    #a9283b;
+
+}
+
+
+.day {
+
+  font-size:
+    9px;
+
+  color:
+    var(--muted);
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+}
+
+
+/* ALARM */
+
+.alarm-table {
+
+  width:
+    100%;
+
+  border-collapse:
+    collapse;
+
+}
+
+
+.alarm-table th {
+
+  color:
+    var(--muted);
+
+  font-size:
+    10px;
+
+  text-align:
+    left;
+
+  padding:
+    8px;
+
+}
+
+
+.alarm-table td {
+
+  padding:
+    8px;
+
+  border-top:
+    1px solid
+    #162834;
+
+  font-size:
+    11px;
+
+}
+
+
+/* FOOTER */
+
+.footer {
+
+  text-align:
+    center;
+
+  color:
+    #526b7d;
+
+  font-size:
+    10px;
+
+  padding:
+    20px;
+
+}
+
+
+/* MOBILE */
+
+@media (
+  max-width: 1100px
+) {
+
+  .status-grid {
+
+    grid-template-columns:
+      1fr 1fr;
+
+  }
+
+
+  .grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+}
+
+
+@media (
+  max-width: 700px
+) {
+
+  .app {
+
+    padding:
+      10px;
+
+  }
+
+
+  .header {
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+  }
+
+
+  .status-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .sensor-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .status-label {
+
+    font-size:
+      24px;
+
+  }
+
+
+  .pred-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .sensor-value {
+
+    font-size:
+      35px;
+
+  }
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div>
+
+      <div class="brand">
+        ⚡ EV SAFE GUARD
+      </div>
+
+      <div class="subtitle">
+        REAL-TIME SAFETY MONITORING • AI PREDICTION • ANOMALY DETECTION
+      </div>
+
+    </div>
+
+
+    <div class="live">
+
+      <span
+        class="live-dot"
+      ></span>
+
+      SYSTEM LIVE
+
+    </div>
+
+  </div>
+
+
+  <!-- STATUS -->
+
+  <div class="status">
+
+    <div class="status-grid">
+
+
+      <div class="status-main">
+
+        <div
+          id="statusIcon"
+          class="status-icon"
+        >
+          🟢
+        </div>
+
+        <div>
+
+          <div
+            id="statusLabel"
+            class="status-label"
+          >
+            CONNECTING...
+          </div>
+
+          <div
+            id="statusText"
+            class="small"
+          >
+            กำลังเชื่อมต่อระบบ
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="kpi">
+
+        <div class="kpi-title">
+          RISK SCORE
+        </div>
+
+        <div
+          id="risk"
+          class="kpi-value"
+        >
+          --
+        </div>
+
+        <div class="small">
+          / 100
+        </div>
+
+      </div>
+
+
+      <div class="kpi">
+
+        <div class="kpi-title">
+          ANOMALY
+        </div>
+
+        <div
+          id="anomaly"
+          class="kpi-value"
+        >
+          --
+        </div>
+
+      </div>
+
+
+      <div class="kpi">
+
+        <div class="kpi-title">
+          TREND
+        </div>
+
+        <div
+          id="trend"
+          class="kpi-value"
+        >
+          --
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- SENSORS -->
+
+  <div class="sensor-grid">
+
+
+    <div class="sensor">
+
+      <div class="sensor-title">
+        GAS
+      </div>
+
+      <div
+        id="gas"
+        class="sensor-value"
+      >
+        --
+      </div>
+
+      <span
+        id="gasStatus"
+        class="badge green"
+      >
+        --
+      </span>
+
+    </div>
+
+
+    <div class="sensor">
+
+      <div class="sensor-title">
+        อุณหภูมิ
+      </div>
+
+      <div
+        id="temp"
+        class="sensor-value"
+      >
+        --
+      </div>
+
+      <span
+        id="tempStatus"
+        class="badge green"
+      >
+        --
+      </span>
+
+    </div>
+
+
+    <div class="sensor">
+
+      <div class="sensor-title">
+        CARBON MONOXIDE
+      </div>
+
+      <div
+        id="co"
+        class="sensor-value"
+      >
+        --
+      </div>
+
+      <span
+        id="coStatus"
+        class="badge green"
+      >
+        --
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- PREDICTION / AI -->
+
+  <div class="grid">
+
+
+    <div class="panel">
+
+      <div class="panel-title">
+
+        🤖 AI PREDICTION
+
+        <span class="small">
+          +2 MINUTES
+        </span>
+
+      </div>
+
+
+      <div class="pred-grid">
+
+
+        <div class="pred">
+
+          <div class="pred-label">
+            GAS
+          </div>
+
+          <div
+            id="predGas"
+            class="pred-value"
+          >
+            --
+          </div>
+
+        </div>
+
+
+        <div class="pred">
+
+          <div class="pred-label">
+            TEMPERATURE
+          </div>
+
+          <div
+            id="predTemp"
+            class="pred-value"
+          >
+            --
+          </div>
+
+        </div>
+
+
+        <div class="pred">
+
+          <div class="pred-label">
+            CO
+          </div>
+
+          <div
+            id="predCo"
+            class="pred-value"
+          >
+            --
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div style="margin-top:15px">
+
+        <span
+          id="predStatus"
+          class="badge green"
+        >
+          --
+        </span>
+
+        <span
+          id="confidence"
+          class="small"
+        >
+          Confidence --
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="panel-title">
+        🧠 AI วิเคราะห์ภาษาไทย
+      </div>
+
+      <div
+        id="ai"
+        class="ai"
+      >
+        กำลังวิเคราะห์...
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- CHART -->
+
+  <div class="panel chart-panel">
+
+    <div class="panel-title">
+
+      📈 HISTORICAL SENSOR TREND
+
+      <div
+        class="chart-tools"
+        style="margin-top:10px"
+      >
+
+        <button
+          class="range active"
+          data-min="60"
+        >
+          1 ชั่วโมง
+        </button>
+
+        <button
+          class="range"
+          data-min="360"
+        >
+          6 ชั่วโมง
+        </button>
+
+        <button
+          class="range"
+          data-min="1440"
+        >
+          24 ชั่วโมง
+        </button>
+
+        <button
+          class="range"
+          data-min="10080"
+        >
+          7 วัน
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="chart">
+
+      <canvas
+        id="chart"
+      ></canvas>
+
+    </div>
+
+  </div>
+
+
+  <!-- HEATMAP -->
+
+  <div class="panel">
+
+    <div class="panel-title">
+
+      🔥 7-DAY ALARM HEATMAP
+
+    </div>
+
+    <div
+      id="heatmap"
+      class="heatmap"
+    ></div>
+
+    <div
+      class="small"
+      style="margin-top:10px"
+    >
+
+      สีเข้ม = ช่วงเวลาที่มี Alarm สูงกว่า
+
+    </div>
+
+  </div>
+
+
+  <!-- ALARM -->
+
+  <div
+    class="panel"
+    style="margin-top:15px"
+  >
+
+    <div class="panel-title">
+
+      🚨 ALARM HISTORY
+
+    </div>
+
+
+    <div style="overflow:auto">
+
+      <table class="alarm-table">
+
+        <thead>
+
+          <tr>
+
+            <th>เวลา</th>
+
+            <th>ระดับ</th>
+
+            <th>แหล่งที่มา</th>
+
+            <th>Gas</th>
+
+            <th>Temp</th>
+
+            <th>CO</th>
+
+            <th>Risk</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody
+          id="alarms"
+        >
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+
+    EV SAFE GUARD V2
+
+    • Real-time Monitoring
+
+    • AI Prediction
+
+    • Anomaly Detection
+
+    <br>
+
+    Last Update:
+    <span id="updated">
+      --
+    </span>
+
+  </div>
+
+
+</div>
+
+
+<script>
+
+
+let currentRange =
+  60;
+
+
+let dashboardCache =
+  null;
+
+
+/************************************************************
+ * LOAD
+ ************************************************************/
+
+function loadDashboard() {
+
+  google.script.run
+
+    .withSuccessHandler(
+      renderDashboard
+    )
+
+    .withFailureHandler(
+      function(error) {
+
+        console.error(
+          error
+        );
+
+        setText(
+          'statusLabel',
+          '⚠️ CONNECTION ERROR'
+        );
+
+      }
+    )
+
+    .getDashboardData();
+
+}
+
+
+/************************************************************
+ * RENDER
+ ************************************************************/
+
+function renderDashboard(
+  data
+) {
+
+  dashboardCache =
+    data;
+
+
+  if (
+    !data ||
+    !data.hasData
+  ) {
+
+    setText(
+      'statusLabel',
+      '⏳ WAITING FOR ESP32'
+    );
+
+    return;
+
+  }
+
+
+  const current =
+    data.current;
+
+
+  const system =
+    data.system;
+
+
+  const risk =
+    data.risk;
+
+
+  const anomaly =
+    data.anomaly;
+
+
+  /********************
+   * STATUS
+   ********************/
+
+  setText(
+    'statusLabel',
+    system.label
+  );
+
+
+  setText(
+    'statusText',
+    system.text
+  );
+
+
+  setText(
+    'risk',
+    risk.score
+  );
+
+
+  setText(
+    'anomaly',
+    anomaly.score
+  );
+
+
+  setText(
+    'trend',
+    data.trend
+  );
+
+
+  /********************
+   * SENSOR
+   ********************/
+
+  setText(
+    'gas',
+    Number(
+      current.gas
+    ).toFixed(2)
+  );
+
+
+  setText(
+    'temp',
+    Number(
+      current.temperature
+    ).toFixed(1)
+    + ' °C'
+  );
+
+
+  setText(
+    'co',
+    Number(
+      current.co
+    ).toFixed(2)
+  );
+
+
+  setSensorStatus(
+    'gasStatus',
+    getGasStatus(
+      current.gas
+    )
+  );
+
+
+  setSensorStatus(
+    'tempStatus',
+    getTempStatus(
+      current.temperature
+    )
+  );
+
+
+  setSensorStatus(
+    'coStatus',
+    getGasStatus(
+      current.co
+    )
+  );
+
+
+  /********************
+   * PREDICTION
+   ********************/
+
+  const p =
+    data.prediction;
+
+
+  if (
+    p &&
+    p.available
+  ) {
+
+    setText(
+      'predGas',
+      p.gas
+    );
+
+
+    setText(
+      'predTemp',
+      p.temperature +
+      ' °C'
+    );
+
+
+    setText(
+      'predCo',
+      p.co
+    );
+
+
+    setSensorStatus(
+      'predStatus',
+      getLevelStatus(
+        p.status
+          ? p.status.level
+          : 0
+      )
+    );
+
+
+    setText(
+      'confidence',
+      'Confidence ' +
+      p.confidence +
+      '%'
+    );
+
+  }
+
+
+  /********************
+   * AI
+   ********************/
+
+  setText(
+    'ai',
+    data.aiAnalysis ||
+    'กำลังรอการวิเคราะห์'
+  );
+
+
+  /********************
+   * ALARM
+   ********************/
+
+  renderAlarms(
+    data.alarms
+  );
+
+
+  /********************
+   * HEATMAP
+   ********************/
+
+  renderHeatmap(
+    data.heatmap
+  );
+
+
+  /********************
+   * CHART
+   ********************/
+
+  loadHistoricalChart(
+    currentRange
+  );
+
+
+  /********************
+   * TIME
+   ********************/
+
+  setText(
+    'updated',
+    new Date()
+      .toLocaleTimeString(
+        'th-TH'
+      )
+  );
+
+}
+
+
+/************************************************************
+ * HISTORICAL CHART
+ ************************************************************/
+
+function loadHistoricalChart(
+  minutes
+) {
+
+  google.script.run
+
+    .withSuccessHandler(
+      drawChart
+    )
+
+    .getHistoricalData(
+      minutes
+    );
+
+}
+
+
+/************************************************************
+ * DRAW CHART
+ ************************************************************/
+
+function drawChart(
+  data
+) {
+
+  const canvas =
+    document.getElementById(
+      'chart'
+    );
+
+
+  const ctx =
+    canvas.getContext(
+      '2d'
+    );
+
+
+  const width =
+    canvas.clientWidth;
+
+
+  const height =
+    canvas.clientHeight;
+
+
+  const ratio =
+    window.devicePixelRatio ||
+    1;
+
+
+  canvas.width =
+    width * ratio;
+
+
+  canvas.height =
+    height * ratio;
+
+
+  ctx.setTransform(
+    ratio,
+    0,
+    0,
+    ratio,
+    0,
+    0
+  );
+
+
+  ctx.clearRect(
+    0,
+    0,
+    width,
+    height
+  );
+
+
+  if (
+    !data ||
+    data.length < 2
+  ) {
+
+    return;
+
+  }
+
+
+  const pad = 40;
+
+  const plotW =
+    width -
+    pad * 2;
+
+  const plotH =
+    height -
+    pad * 2;
+
+
+  let max =
+    60;
+
+
+  data.forEach(
+    function(d) {
+
+      max =
+        Math.max(
+          max,
+          d.temperature
+        );
+
+    }
+  );
+
+
+  max *= 1.1;
+
+
+  /* GRID */
+
+  ctx.strokeStyle =
+    'rgba(255,255,255,.07)';
+
+  ctx.lineWidth = 1;
+
+
+  for (
+    let i = 0;
+    i <= 5;
+    i++
+  ) {
+
+    const y =
+      pad +
+      plotH *
+      i /
+      5;
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+      pad,
+      y
+    );
+
+    ctx.lineTo(
+      width - pad,
+      y
+    );
+
+    ctx.stroke();
+
+  }
+
+
+  drawSeries(
+    ctx,
+    data,
+    'gas',
+    max,
+    pad,
+    plotW,
+    plotH,
+    width,
+    height
+  );
+
+
+  drawSeries(
+    ctx,
+    data,
+    'temperature',
+    max,
+    pad,
+    plotW,
+    plotH,
+    width,
+    height
+  );
+
+
+  drawSeries(
+    ctx,
+    data,
+    'co',
+    max,
+    pad,
+    plotW,
+    plotH,
+    width,
+    height
+  );
+
+
+  /* LEGEND */
+
+  ctx.font =
+    '11px Arial';
+
+
+  ctx.fillStyle =
+    '#00d9ff';
+
+  ctx.fillText(
+    'Gas',
+    pad,
+    15
+  );
+
+
+  ctx.fillStyle =
+    '#ff9d42';
+
+  ctx.fillText(
+    'Temperature',
+    pad + 55,
+    15
+  );
+
+
+  ctx.fillStyle =
+    '#b879ff';
+
+  ctx.fillText(
+    'CO',
+    pad + 145,
+    15
+  );
+
+}
+
+
+/************************************************************
+ * SERIES
+ ************************************************************/
+
+function drawSeries(
+  ctx,
+  data,
+  key,
+  max,
+  pad,
+  plotW,
+  plotH,
+  width,
+  height
+) {
+
+  ctx.beginPath();
+
+
+  data.forEach(
+    function(d, i) {
+
+      const x =
+        pad +
+        (
+          plotW *
+          i /
+          (
+            data.length - 1
+          )
+        );
+
+
+      const value =
+        Number(
+          d[key]
+        ) || 0;
+
+
+      const y =
+        height -
+        pad -
+        (
+          value /
+          max
+        ) *
+        plotH;
+
+
+      if (
+        i === 0
+      ) {
+
+        ctx.moveTo(
+          x,
+          y
+        );
+
+      } else {
+
+        ctx.lineTo(
+          x,
+          y
+        );
+
+      }
+
+    }
+  );
+
+
+  if (
+    key === 'gas'
+  ) {
+
+    ctx.strokeStyle =
+      '#00d9ff';
+
+  }
+
+
+  if (
+    key ===
+    'temperature'
+  ) {
+
+    ctx.strokeStyle =
+      '#ff9d42';
+
+  }
+
+
+  if (
+    key === 'co'
+  ) {
+
+    ctx.strokeStyle =
+      '#b879ff';
+
+  }
+
+
+  ctx.lineWidth = 2;
+
+  ctx.stroke();
+
+}
+
+
+/************************************************************
+ * HEATMAP
+ ************************************************************/
+
+function renderHeatmap(
+  data
+) {
+
+  const container =
+    document.getElementById(
+      'heatmap'
+    );
+
+
+  container.innerHTML =
+    '';
+
+
+  const days = [
+
+    'อา',
+
+    'จ',
+
+    'อ',
+
+    'พ',
+
+    'พฤ',
+
+    'ศ',
+
+    'ส'
+
+  ];
+
+
+  const header =
+    document.createElement(
+      'div'
+    );
+
+
+  container.appendChild(
+    header
+  );
+
+
+  for (
+    let h = 0;
+    h < 24;
+    h++
+  ) {
+
+    const cell =
+      document.createElement(
+        'div'
+      );
+
+
+    cell.className =
+      'small';
+
+    cell.textContent =
+      h;
+
+
+    cell.style.textAlign =
+      'center';
+
+
+    container.appendChild(
+      cell
+    );
+
+  }
+
+
+  for (
+    let d = 0;
+    d < 7;
+    d++
+  ) {
+
+    const day =
+      document.createElement(
+        'div'
+      );
+
+
+    day.className =
+      'day';
+
+    day.textContent =
+      days[d];
+
+
+    container.appendChild(
+      day
+    );
+
+
+    for (
+      let h = 0;
+      h < 24;
+      h++
+    ) {
+
+      const value =
+        data &&
+        data[d]
+          ? data[d][h] || 0
+          : 0;
+
+
+      const cell =
+        document.createElement(
+          'div'
+        );
+
+
+      cell.className =
+        'heat-cell';
+
+
+      if (
+        value === 1
+      ) {
+
+        cell.classList.add(
+          'heat-1'
+        );
+
+      }
+
+
+      if (
+        value === 2
+      ) {
+
+        cell.classList.add(
+          'heat-2'
+        );
+
+      }
+
+
+      container.appendChild(
+        cell
+      );
+
+    }
+
+  }
+
+}
+
+
+/************************************************************
+ * ALARMS
+ ************************************************************/
+
+function renderAlarms(
+  alarms
+) {
+
+  const tbody =
+    document.getElementById(
+      'alarms'
+    );
+
+
+  tbody.innerHTML =
+    '';
+
+
+  if (
+    !alarms ||
+    alarms.length === 0
+  ) {
+
+    tbody.innerHTML =
+      '<tr><td colspan="7">ไม่มี Alarm</td></tr>';
+
+    return;
+
+  }
+
+
+  alarms.forEach(
+    function(a) {
+
+      const tr =
+        document.createElement(
+          'tr'
+        );
+
+
+      tr.innerHTML =
+
+        '<td>' +
+        escapeHtml(
+          a.time
+        ) +
+        '</td>' +
+
+        '<td>' +
+        escapeHtml(
+          a.level
+        ) +
+        '</td>' +
+
+        '<td>' +
+        escapeHtml(
+          a.source
+        ) +
+        '</td>' +
+
+        '<td>' +
+        a.gas +
+        '</td>' +
+
+        '<td>' +
+        a.temperature +
+        '</td>' +
+
+        '<td>' +
+        a.co +
+        '</td>' +
+
+        '<td>' +
+        a.risk +
+        '</td>';
+
+
+      tbody.appendChild(
+        tr
+      );
+
+    }
+  );
+
+}
+
+
+/************************************************************
+ * SENSOR STATUS
+ ************************************************************/
+
+function getGasStatus(
+  value
+) {
+
+  if (
+    value >= 0.6
+  ) {
+
+    return {
+      text:
+        '🔴 DANGER',
+      className:
+        'red'
+    };
+
+  }
+
+
+  if (
+    value >= 0.1
+  ) {
+
+    return {
+      text:
+        '🟡 WARNING',
+      className:
+        'yellow'
+    };
+
+  }
+
+
+  return {
+
+    text:
+      '🟢 NORMAL',
+
+    className:
+      'green'
+
+  };
+
+}
+
+
+function getTempStatus(
+  value
+) {
+
+  if (
+    value >= 56
+  ) {
+
+    return {
+      text:
+        '🔴 DANGER',
+      className:
+        'red'
+    };
+
+  }
+
+
+  if (
+    value >= 45
+  ) {
+
+    return {
+      text:
+        '🟡 WARNING',
+      className:
+        'yellow'
+    };
+
+  }
+
+
+  return {
+
+    text:
+      '🟢 NORMAL',
+
+    className:
+      'green'
+
+  };
+
+}
+
+
+function getLevelStatus(
+  level
+) {
+
+  if (
+    level === 2
+  ) {
+
+    return {
+
+      text:
+        '🔴 DANGER',
+
+      className:
+        'red'
+
+    };
+
+  }
+
+
+  if (
+    level === 1
+  ) {
+
+    return {
+
+      text:
+        '🟡 WARNING',
+
+      className:
+        'yellow'
+
+    };
+
+  }
+
+
+  return {
+
+    text:
+      '🟢 NORMAL',
+
+    className:
+      'green'
+
+  };
+
+}
+
+
+function setSensorStatus(
+  id,
+  status
+) {
+
+  const el =
+    document.getElementById(
+      id
+    );
+
+
+  if (!el) return;
+
+
+  el.textContent =
+    status.text;
+
+
+  el.className =
+    'badge ' +
+    status.className;
+
+}
+
+
+/************************************************************
+ * RANGE BUTTONS
+ ************************************************************/
+
+document
+  .querySelectorAll(
+    '.range'
+  )
+  .forEach(
+    function(button) {
+
+      button.addEventListener(
+        'click',
+        function() {
+
+          document
+            .querySelectorAll(
+              '.range'
+            )
+            .forEach(
+              b =>
+                b.classList.remove(
+                  'active'
+                )
+            );
+
+
+          this.classList.add(
+            'active'
+          );
+
+
+          currentRange =
+            Number(
+              this.dataset.min
+            );
+
+
+          loadHistoricalChart(
+            currentRange
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/************************************************************
+ * UTILITIES
+ ************************************************************/
+
+function setText(
+  id,
+  value
+) {
+
+  const el =
+    document.getElementById(
+      id
+    );
+
+
+  if (el) {
+
+    el.textContent =
+      value;
+
+  }
+
+}
+
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value ?? ''
+  )
+
+    .replace(
+      /&/g,
+      '&amp;'
+    )
+
+    .replace(
+      /</g,
+      '&lt;'
+    )
+
+    .replace(
+      />/g,
+      '&gt;'
+    )
+
+    .replace(
+      /"/g,
+      '&quot;'
+    )
+
+    .replace(
+      /'/g,
+      '&#039;'
+    );
+
+}
+
+
+/************************************************************
+ * START
+ ************************************************************/
+
+loadDashboard();
+
+
+setInterval(
+  loadDashboard,
+  5000
+);
+
+
+window.addEventListener(
+  'resize',
+  function() {
+
+    if (
+      dashboardCache
+    ) {
+
+      loadHistoricalChart(
+        currentRange
+      );
+
+    }
+
+  }
+);
+
+
+</script>
+
+</body>
+
+</html>
